@@ -1,8 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace Proyecto_integrador_club_deportivo.Datos
 {
@@ -10,8 +7,7 @@ namespace Proyecto_integrador_club_deportivo.Datos
     {
         public static void RegistrarPago(Pago pago)
         {
-            MySqlConnection conexion =
-                Conexion.getInstancia().CrearConexion();
+            MySqlConnection conexion = Conexion.getInstancia().CrearConexion();
 
             conexion.Open();
 

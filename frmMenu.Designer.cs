@@ -39,16 +39,16 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F);
-            label1.Location = new Point(13, 42);
+            label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(78, 32);
+            label1.Size = new Size(134, 32);
             label1.TabIndex = 0;
-            label1.Text = "label1";
+            label1.Text = "Bienvenido";
             // 
             // btnSalir
             // 
             btnSalir.Font = new Font("Segoe UI", 18F);
-            btnSalir.Location = new Point(613, 31);
+            btnSalir.Location = new Point(635, 12);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(153, 65);
             btnSalir.TabIndex = 1;
@@ -61,11 +61,11 @@
             btnInscribir.BackColor = SystemColors.GradientActiveCaption;
             btnInscribir.BackgroundImageLayout = ImageLayout.None;
             btnInscribir.Font = new Font("Segoe UI", 18F);
-            btnInscribir.Location = new Point(13, 142);
+            btnInscribir.Location = new Point(12, 177);
             btnInscribir.Name = "btnInscribir";
             btnInscribir.Size = new Size(355, 88);
             btnInscribir.TabIndex = 2;
-            btnInscribir.Text = "Inscribir Postulante";
+            btnInscribir.Text = "Inscribir alumno";
             btnInscribir.UseVisualStyleBackColor = false;
             btnInscribir.Click += btnInscribir_Click;
             // 
@@ -74,7 +74,7 @@
             btnVerInscriptos.BackColor = SystemColors.GradientActiveCaption;
             btnVerInscriptos.BackgroundImageLayout = ImageLayout.None;
             btnVerInscriptos.Font = new Font("Segoe UI", 18F);
-            btnVerInscriptos.Location = new Point(433, 142);
+            btnVerInscriptos.Location = new Point(433, 177);
             btnVerInscriptos.Name = "btnVerInscriptos";
             btnVerInscriptos.Size = new Size(355, 88);
             btnVerInscriptos.TabIndex = 3;
@@ -87,11 +87,11 @@
             btnEmitirComprobante.BackColor = SystemColors.GradientActiveCaption;
             btnEmitirComprobante.BackgroundImageLayout = ImageLayout.None;
             btnEmitirComprobante.Font = new Font("Segoe UI", 18F);
-            btnEmitirComprobante.Location = new Point(13, 285);
+            btnEmitirComprobante.Location = new Point(12, 365);
             btnEmitirComprobante.Name = "btnEmitirComprobante";
-            btnEmitirComprobante.Size = new Size(775, 88);
+            btnEmitirComprobante.Size = new Size(355, 88);
             btnEmitirComprobante.TabIndex = 5;
-            btnEmitirComprobante.Text = "Emitir Listado de Vencimientos";
+            btnEmitirComprobante.Text = "Listado de vencimientos";
             btnEmitirComprobante.UseVisualStyleBackColor = false;
             btnEmitirComprobante.Click += btnEmitirComprobante_Click;
             // 
@@ -99,15 +99,16 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 484);
+            ControlBox = false;
             Controls.Add(btnEmitirComprobante);
             Controls.Add(btnVerInscriptos);
             Controls.Add(btnInscribir);
             Controls.Add(btnSalir);
             Controls.Add(label1);
             Name = "frmMenu";
-            Text = "frmMenu";
-            Load += frmMenu_Load;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Menú principal";
             ResumeLayout(false);
             PerformLayout();
         }

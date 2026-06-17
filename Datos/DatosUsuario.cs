@@ -1,42 +1,21 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace Proyecto_integrador_club_deportivo.Datos
 {
     internal class DatosUsuario
     {
-        private MySqlConnection conexion;
-        public DatosUsuario()
+        public static bool Ingresar(string usuario, string clave)
         {
-            conexion = new MySqlConnection(
-                "server=localhost;database=Proyecto;uid=root;pwd=;"
-            );
-        }
+            MySqlCommand Ingresar = new MySqlCommand("Ingresar");
 
-        public DataTable Log_Usu(string usuario, string clave)
-        {
-            DataTable tabla = new DataTable();
+            Ingresar.CommandType = CommandType.StoredProcedure;
 
-            try
-            {
-                MySqlCommand cmd = new MySqlCommand("Ingresar", conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
+            Ingresar.Parameters.Add("p_usuario", MySqlDbType.VarChar).Value = usuario;
+            Ingresar.Parameters.Add("p_clave", MySqlDbType.VarChar).Value = clave;
 
-                cmd.Parameters.AddWithValue("p_usuario", usuario);
-                cmd.Parameters.AddWithValue("p_clave", clave);
-
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                da.Fill(tabla);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            return tabla;
+            // retorna true cuando los datos estan OK
+            return EjecutarComando.EjecutarMySQLCommand(Ingresar).Rows.Count == 1; 
         }
     }
 }

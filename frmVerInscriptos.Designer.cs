@@ -38,9 +38,12 @@
             // dvgInscriptos
             // 
             dvgInscriptos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dvgInscriptos.Location = new Point(1, 0);
+            dvgInscriptos.Dock = DockStyle.Fill;
+            dvgInscriptos.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dvgInscriptos.Location = new Point(0, 0);
             dvgInscriptos.Name = "dvgInscriptos";
-            dvgInscriptos.Size = new Size(798, 451);
+            dvgInscriptos.ReadOnly = true;
+            dvgInscriptos.Size = new Size(1184, 461);
             dvgInscriptos.TabIndex = 0;
             dvgInscriptos.CellContentClick += dvgInscriptos_CellContentClick;
             // 
@@ -52,10 +55,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1184, 461);
             Controls.Add(dvgInscriptos);
+            MinimizeBox = false;
             Name = "frmVerInscriptos";
-            Text = "frmVerInscriptos";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Listado de alumnos inscriptos";
             Load += frmVerInscriptos_Load;
             ((System.ComponentModel.ISupportInitialize)dvgInscriptos).EndInit();
             ((System.ComponentModel.ISupportInitialize)conexionBindingSource).EndInit();

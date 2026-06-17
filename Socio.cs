@@ -1,10 +1,4 @@
-﻿using Proyecto_integrador_club_deportivo;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Proyecto_integrador_club_deportivo
+﻿namespace Proyecto_integrador_club_deportivo
 {
     internal class Socio : Alumno
     {

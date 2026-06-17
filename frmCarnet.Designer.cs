@@ -144,7 +144,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "frmCarnet";
-            Text = "frmCarnet";
+            Text = "Carnet";
             ResumeLayout(false);
             PerformLayout();
         }

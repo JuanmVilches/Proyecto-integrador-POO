@@ -1,14 +1,4 @@
-﻿using Mysqlx.Crud;
-using Proyecto_integrador_club_deportivo;
-using Proyecto_integrador_club_deportivo.Datos;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿using Proyecto_integrador_club_deportivo.Datos;
 
 namespace Proyecto_integrador_club_deportivo
 {
@@ -79,5 +69,3 @@ namespace Proyecto_integrador_club_deportivo
         }
     }
 }
-
-         

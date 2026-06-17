@@ -1,11 +1,4 @@
 ﻿using Proyecto_integrador_club_deportivo.Datos;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 
 namespace Proyecto_integrador_club_deportivo
 {
@@ -15,16 +8,13 @@ namespace Proyecto_integrador_club_deportivo
         {
             InitializeComponent();
         }
-
         private void CargarGrilla()
         {
-            dvgInscriptos.DataSource =
-                DatosAlumno.LeerAlumnos();
+            dvgInscriptos.DataSource = DatosAlumno.LeerAlumnos();
 
             if (!dvgInscriptos.Columns.Contains("Estado"))
             {
-                DataGridViewTextBoxColumn estado =
-                    new DataGridViewTextBoxColumn();
+                DataGridViewTextBoxColumn estado = new DataGridViewTextBoxColumn();
 
                 estado.Name = "Estado";
                 estado.HeaderText = "Estado";
@@ -34,8 +24,7 @@ namespace Proyecto_integrador_club_deportivo
 
             if (!dvgInscriptos.Columns.Contains("Ver Carnet"))
             {
-                DataGridViewButtonColumn btnCarnet =
-                    new DataGridViewButtonColumn();
+                DataGridViewButtonColumn btnCarnet = new DataGridViewButtonColumn();
 
                 btnCarnet.Name = "Ver Carnet";
                 btnCarnet.HeaderText = "Carnet";
@@ -88,8 +77,7 @@ namespace Proyecto_integrador_club_deportivo
                 }
                 else
                 {
-                    DateTime fecha =
-                        Convert.ToDateTime(vencimiento);
+                    DateTime fecha = Convert.ToDateTime(vencimiento);
 
                     fila.Cells["Estado"].Value =
                         fecha >= DateTime.Today
@@ -100,40 +88,7 @@ namespace Proyecto_integrador_club_deportivo
         }
         private void frmVerInscriptos_Load(object sender, EventArgs e)
         {
-
-            //DataGridViewButtonColumn btnCarnet = new DataGridViewButtonColumn();
-            //DataGridViewButtonColumn btnPagar = new DataGridViewButtonColumn();
-            //DataGridViewTextBoxColumn estado = new DataGridViewTextBoxColumn();
-
-            //btnPagar.Name = "Pagar";
-            //btnPagar.HeaderText = "Cuota";
-            //btnPagar.Text = "Pagar";
-            //btnPagar.UseColumnTextForButtonValue = true;
-
-            //estado.HeaderText = "Estado";
-            //estado.Name = "Estado";
-            //btnCarnet.Name = "Ver Carnet";
-            //btnCarnet.Text = "Ver Carnet";
-            //btnCarnet.HeaderText = "Carnet";
-            //btnCarnet.UseColumnTextForButtonValue = true;
             CargarGrilla();
-
-            //dvgInscriptos.ReadOnly = true;
-            //dvgInscriptos.AllowUserToAddRows = false;
-            //dvgInscriptos.AllowUserToDeleteRows = false;
-            //dvgInscriptos.Columns["identificador"].Visible = false;
-            //dvgInscriptos.Columns["nombre"].HeaderText = "Nombre";
-            //dvgInscriptos.Columns["apellido"].HeaderText = "Apellido";
-            //dvgInscriptos.Columns["documento"].HeaderText = "Documento";
-            //dvgInscriptos.Columns["esSocio"].HeaderText = "Socio";
-            //dvgInscriptos.Columns["apto_fisico"].HeaderText = "Apto Físico";
-            //dvgInscriptos.Columns["actividad"].HeaderText = "Actividad";
-            //dvgInscriptos.Columns["vencimiento"].HeaderText = "Vencimiento";
-            //dvgInscriptos.Columns["vencimiento"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            //dvgInscriptos.Columns.Add(btnCarnet);
-            //dvgInscriptos.Columns.Add(btnPagar);
-            //dvgInscriptos.Columns.Add(estado);
-
         }
         private void dvgInscriptos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

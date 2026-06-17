@@ -40,13 +40,12 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(79, 73);
+            pictureBox1.Location = new Point(82, 54);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(193, 212);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // txtIngresarUsuario
             // 
@@ -89,7 +88,7 @@
             btnIngresar.UseVisualStyleBackColor = true;
             btnIngresar.Click += btnIngresar_Click;
             // 
-            // Form1
+            // frmIngresar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -99,8 +98,8 @@
             Controls.Add(txtIngresarContraseña);
             Controls.Add(txtIngresarUsuario);
             Controls.Add(pictureBox1);
-            Name = "Form1";
-            Text = "Form1";
+            Name = "frmIngresar";
+            Text = "Ingreso al sistema";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
