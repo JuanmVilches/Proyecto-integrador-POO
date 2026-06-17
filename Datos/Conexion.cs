@@ -1,7 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Proyecto_integrador_club_deportivo.Datos
 {
@@ -14,21 +11,22 @@ namespace Proyecto_integrador_club_deportivo.Datos
         private string usuario;
         private string clave;
         private static Conexion? con = null;
-        private Conexion() // asignamos valores a las variables de la conexion
+        private Conexion(string baseDatos, string servidor, string puerto, string usuario, string clave) 
         {
-            this.baseDatos = "proyecto";
-            this.servidor = "localhost";
-            this.puerto = "3306";
-            this.usuario = "root";
-            this.clave = "";
+            this.baseDatos = baseDatos;
+            this.servidor = servidor;
+            this.puerto = puerto;
+            this.usuario = usuario;
+            this.clave = clave;
         }
-        // proceso de interacción
-        public MySqlConnection CrearConexion()
+        public static void ConfigurarConexion(string baseDatos, string servidor, string puerto, string usuario, string clave)
         {
-            // instanciamos una conexion
-            MySqlConnection? cadena = new MySqlConnection();
-            // el bloque try permite controlar errores
-            try
+            Conexion.con = new Conexion(baseDatos, servidor, puerto, usuario, clave);
+        }
+        public MySqlConnection CrearConexion() // proceso de interacción
+        {
+            MySqlConnection cadena = new MySqlConnection(); // instanciamos una conexion
+            try  // el bloque try permite controlar errores
             {
                 cadena.ConnectionString = "datasource=" + this.servidor +
                 ";port=" + this.puerto +
@@ -38,19 +36,24 @@ namespace Proyecto_integrador_club_deportivo.Datos
             }
             catch (Exception ex)
             {
-                cadena = null;
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 throw;
             }
             return cadena;
         }
-        // para evaluar la instancia de la conectividad
-        public static Conexion getInstancia()
+        public static bool hayInstancia()
         {
-            if (con == null) // quiere decir que la conexion esta cerrada
+            if(con == null)
             {
-                con = new Conexion(); // se crea una nueva
+                return false;
             }
+            else
+            {
+                return true;
+            }
+        }
+        public static Conexion getInstancia()  // para evaluar la instancia de la conectividad
+        {
             return con;
         }
     } 

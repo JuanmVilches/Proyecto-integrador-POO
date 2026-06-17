@@ -26,18 +26,24 @@ CREATE TABLE Usuario (
     clave VARCHAR(50) NOT NULL
 );
 
+-- Usuario elemplo
 INSERT INTO Usuario (usuario, clave) VALUES
 ('usuario', '123456');
 
-INSERT INTO Alumno (documento, nombre, apellido, esSocio, apto_fisico, actividad) values (12345678, "Pedro", "Martinez", 0, 1, "Futbol");
+-- Alumno de ejemplo
+INSERT INTO Alumno (documento, nombre, apellido, esSocio, apto_fisico, actividad) VALUES
+(12345678, "Pedro", "Martinez", 0, 1, "Futbol");
 
+-- INICIO STORED PROCEDURES --
 DELIMITER $
 
+-- Validar un usuario contra la base de datos
 CREATE PROCEDURE Ingresar(in p_usuario varchar(50),in p_clave varchar(50))
 BEGIN
 	SELECT usuario FROM Usuario u WHERE u.usuario = p_usuario AND u.clave = p_clave;
 END$
 
+--- Leer la lista de alumnos (socios + no-socios)
 CREATE PROCEDURE LeerAlumnos()
 BEGIN
     SELECT a.documento, a.identificador, a.nombre, a.apellido, a.esSocio, a.apto_fisico, a.actividad,
@@ -45,24 +51,29 @@ BEGIN
     FROM Alumno a;
 END$
 
-CREATE PROCEDURE CrearAlumno(in p_documento int, in p_nombre VARCHAR(100), in p_apellido VARCHAR(100), in p_esSocio BOOLEAN, in p_apto_fisico BOOLEAN, in p_actividad VARCHAR(30))
+-- Agregar un nuevo alumno
+CREATE PROCEDURE CrearAlumno(
+    in p_documento int,
+    in p_nombre VARCHAR(100),
+    in p_apellido VARCHAR(100),
+    in p_esSocio BOOLEAN,
+    in p_apto_fisico BOOLEAN,
+    in p_actividad VARCHAR(30)
+)
 BEGIN
-    INSERT INTO Alumno (documento, nombre, apellido, esSocio, apto_fisico, actividad) VALUES (p_documento, p_nombre, p_apellido, p_esSocio, p_apto_fisico, p_actividad);
+    INSERT INTO Alumno (documento, nombre, apellido, esSocio, apto_fisico, actividad)
+    VALUES (p_documento, p_nombre, p_apellido, p_esSocio, p_apto_fisico, p_actividad);
     SELECT LAST_INSERT_ID() AS identificador;
 END$
-DELIMITER ;
 
-DELIMITER $
-
+-- Agregar un nuevo pago
 CREATE PROCEDURE RegistrarPago(IN p_inicio DATE, IN p_fin DATE, IN p_alumno INT)
 BEGIN
 	INSERT INTO Pago(periodoInicio, periodoFin, identificadorAlumno)
     VALUES(p_inicio, p_fin, p_alumno);
 END$
-DELIMITER ;
 
-DELIMITER $
-
+-- Leer vencimientos de hoy
 CREATE PROCEDURE LeerVencimientosHoy()
 BEGIN
     SELECT
@@ -83,4 +94,6 @@ BEGIN
         a.actividad
     HAVING DATE(MAX(p.periodoFin)) = CURDATE();
 END$
+
+--- FIN STORED PROCEDURES ---
 DELIMITER ;

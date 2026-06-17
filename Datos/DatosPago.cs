@@ -1,8 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace Proyecto_integrador_club_deportivo.Datos
 {
@@ -10,34 +7,18 @@ namespace Proyecto_integrador_club_deportivo.Datos
     {
         public static void RegistrarPago(Pago pago)
         {
-            MySqlConnection conexion =
-                Conexion.getInstancia().CrearConexion();
-
-            conexion.Open();
-
-            MySqlCommand cmd =
-                new MySqlCommand(
-                    "RegistrarPago",
-                    conexion);
-
-            cmd.CommandType =
-                CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue(
-                "p_inicio",
-                pago.PeriodoInicio);
-
-            cmd.Parameters.AddWithValue(
-                "p_fin",
-                pago.PeriodoFin);
-
-            cmd.Parameters.AddWithValue(
-                "p_alumno",
-                pago.IdentificadorAlumno);
-
-            cmd.ExecuteNonQuery();
-
-            conexion.Close();
+            MySqlCommand registrarPago = new MySqlCommand("RegistrarPago");
+            registrarPago.CommandType = CommandType.StoredProcedure;
+            registrarPago.Parameters.AddWithValue("p_inicio", pago.PeriodoInicio);
+            registrarPago.Parameters.AddWithValue("p_fin", pago.PeriodoFin);
+            registrarPago.Parameters.AddWithValue("p_alumno", pago.IdentificadorAlumno);
+            EjecutarComando.EjecutarMySQLCommand(registrarPago);
+        }
+        public static DataTable LeerVencimientosHoy()
+        {
+            MySqlCommand leerVencimientosHoy = new MySqlCommand("LeerVencimientosHoy");
+            leerVencimientosHoy.CommandType = CommandType.StoredProcedure;
+            return EjecutarComando.EjecutarMySQLCommand(leerVencimientosHoy);
         }
     }
 }

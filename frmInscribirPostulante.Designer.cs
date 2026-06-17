@@ -93,7 +93,6 @@
             label3.Size = new Size(67, 21);
             label3.TabIndex = 4;
             label3.Text = "Apellido";
-            label3.Click += label3_Click;
             // 
             // txtApellido
             // 
@@ -115,6 +114,7 @@
             // txtDocumento
             // 
             txtDocumento.Location = new Point(320, 255);
+            txtDocumento.MaxLength = 8;
             txtDocumento.Name = "txtDocumento";
             txtDocumento.Size = new Size(308, 23);
             txtDocumento.TabIndex = 7;
@@ -195,6 +195,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            ControlBox = false;
             Controls.Add(label5);
             Controls.Add(cmbActividad);
             Controls.Add(chkAptoFisico);
@@ -211,7 +212,7 @@
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Name = "frmInscribirPostulante";
-            Text = "frmInscribirPostulante";
+            Text = "Inscribir Postulante";
             Load += frmInscribirPostulante_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

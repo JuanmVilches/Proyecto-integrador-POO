@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Proyecto_integrador_club_deportivo
+﻿namespace Proyecto_integrador_club_deportivo
 {
     internal class Alumno : Persona
     {
@@ -37,4 +33,3 @@ namespace Proyecto_integrador_club_deportivo
         public virtual bool obtenerEstadoPago() { return true; }
     }
 }
-
