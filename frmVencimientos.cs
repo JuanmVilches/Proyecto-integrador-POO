@@ -1,11 +1,4 @@
 ﻿using Proyecto_integrador_club_deportivo.Datos;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 
 namespace Proyecto_integrador_club_deportivo
 {
@@ -15,11 +8,9 @@ namespace Proyecto_integrador_club_deportivo
         {
             InitializeComponent();
         }
-
         private void frmVencimientos_Load(object sender, EventArgs e)
         {
-            dgvVencimientos.DataSource =
-                DatosAlumno.LeerVencimientosHoy();
+            dgvVencimientos.DataSource = DatosPago.LeerVencimientosHoy();
 
             dgvVencimientos.ReadOnly = true;
             dgvVencimientos.AllowUserToAddRows = false;

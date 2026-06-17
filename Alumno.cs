@@ -33,4 +33,3 @@
         public virtual bool obtenerEstadoPago() { return true; }
     }
 }
-

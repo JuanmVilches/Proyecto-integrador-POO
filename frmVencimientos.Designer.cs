@@ -29,46 +29,35 @@
         private void InitializeComponent()
         {
             dgvVencimientos = new DataGridView();
-            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvVencimientos).BeginInit();
             SuspendLayout();
             // 
             // dgvVencimientos
             // 
             dgvVencimientos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvVencimientos.Location = new Point(2, 34);
+            dgvVencimientos.Dock = DockStyle.Fill;
+            dgvVencimientos.Location = new Point(0, 0);
             dgvVencimientos.Name = "dgvVencimientos";
-            dgvVencimientos.Size = new Size(799, 415);
+            dgvVencimientos.Size = new Size(1184, 461);
             dgvVencimientos.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F);
-            label1.Location = new Point(249, 3);
-            label1.Name = "label1";
-            label1.Size = new Size(298, 28);
-            label1.TabIndex = 1;
-            label1.Text = "VENCIMIENTOS DEL DIA DE HOY";
             // 
             // frmVencimientos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(label1);
+            ClientSize = new Size(1184, 461);
             Controls.Add(dgvVencimientos);
+            MinimizeBox = false;
             Name = "frmVencimientos";
-            Text = "frmVencimientos";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Vencimientos del dia de hoy";
             Load += frmVencimientos_Load;
             ((System.ComponentModel.ISupportInitialize)dgvVencimientos).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dgvVencimientos;
-        private Label label1;
     }
 }

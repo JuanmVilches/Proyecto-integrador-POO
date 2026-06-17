@@ -1,6 +1,4 @@
-using MySql.Data.MySqlClient;
 using Proyecto_integrador_club_deportivo.Datos;
-using System.Data;
 
 namespace Proyecto_integrador_club_deportivo
 {
@@ -50,31 +48,24 @@ namespace Proyecto_integrador_club_deportivo
         {
             if(DatosUsuario.Ingresar(txtIngresarUsuario.Text,txtIngresarContraseña.Text))
             {
+                MessageBox.Show(
+                    "Ingreso exitoso",
+                    "Ingresar",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
                 frmMenu menu = new frmMenu();
                 menu.Show();
                 Hide();
             }
             else
             {
-                MessageBox.Show("Usuario y/o password incorrecto");
-            }
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                MySqlConnection cn =
-                    Conexion.getInstancia().CrearConexion();
-
-                cn.Open();
-
-                MessageBox.Show("Conexión exitosa");
-
-                cn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(
+                    "Usuario y/o password incorrecto",
+                    "Ingresar",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
         }
     }

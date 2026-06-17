@@ -31,26 +31,5 @@ namespace Proyecto_integrador_club_deportivo.Datos
             leerAlumnos.CommandType = CommandType.StoredProcedure;
             return EjecutarComando.EjecutarMySQLCommand(leerAlumnos);
         }
-        public static DataTable LeerVencimientosHoy()
-        {
-            DataTable tabla = new DataTable();
-
-            MySqlConnection conexion =
-                Conexion.getInstancia().CrearConexion();
-
-            conexion.Open();
-
-            MySqlCommand cmd = new MySqlCommand("LeerVencimientosHoy", conexion);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-
-            da.Fill(tabla);
-
-            conexion.Close();
-
-            return tabla;
-        }
     }
 }
