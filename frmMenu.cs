@@ -8,7 +8,7 @@
         }
         private void btnInscribir_Click(object sender, EventArgs e)
         {
-            frmInscribirPostulante inscribirPosulante = new frmInscribirPostulante();
+            frmInscribirAlumno inscribirPosulante = new frmInscribirAlumno();
             inscribirPosulante.ShowDialog();
         }
         private void btnSalir_Click(object sender, EventArgs e)

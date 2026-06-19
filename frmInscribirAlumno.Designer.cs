@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_integrador_club_deportivo
 {
-    partial class frmInscribirPostulante
+    partial class frmInscribirAlumno
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInscribirPostulante));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInscribirAlumno));
             pictureBox1 = new PictureBox();
             label1 = new Label();
             label2 = new Label();
