@@ -56,7 +56,7 @@ namespace Proyecto_integrador_club_deportivo
                     "Alumno creado con éxito!",
                     "Crear nuevo alumno",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation
+                    MessageBoxIcon.Information
                 );
             }
             btnLimpiar_Click(this, e);
