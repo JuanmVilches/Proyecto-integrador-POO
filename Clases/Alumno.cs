@@ -2,11 +2,11 @@
 {
     internal class Alumno : Persona
     {
-        private List<Pago> pagos; // Cuando este crada la clase Pago sera List<Pago>
-        private List<string> rutinas; // Cuando este creada la clase Rutina sera List<Rutina>
-        private bool esSocio;
-        public bool apto_fisico;
-        public string actividad;
+        protected List<Pago> pagos; // Cuando este crada la clase Pago sera List<Pago>
+        protected List<string> rutinas; // Cuando este creada la clase Rutina sera List<Rutina>
+        protected bool esSocio;
+        protected bool apto_fisico;
+        protected string actividad;
         public Alumno(int identificador, int documento, string nombre, string apellido, bool esSocio, bool apto_fisico, string actividad)
             : base(identificador, documento, nombre, apellido)
         {
@@ -16,14 +16,13 @@
             this.apto_fisico = apto_fisico;
             this.actividad = actividad;
         }
-        public List<Pago> Pagos { get => pagos; set => pagos = value; }
         public void agregarPago(Pago pago)
         {
             this.pagos.Add(pago);
         }
+        public List<Pago> Pagos { get => pagos; set => pagos = value; }
         public List<string> Rutinas { get => rutinas; set => rutinas = value; }
         public bool EsSocio { get => esSocio; set => esSocio = value; }
-        public virtual void pagar() { }
-        public virtual bool obtenerEstadoPago() { return true; }
+        public virtual string obtenerEstadoPago() { return ""; }
     }
 }
