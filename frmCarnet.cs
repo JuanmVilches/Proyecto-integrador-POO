@@ -17,8 +17,18 @@ namespace Proyecto_integrador_club_deportivo
             lblNombre.Text = nombre + " " + apellido;
             lblActividad.Text = actividad;
             lblDocumento.Text = documento;
-            if (socio)  lblTipo.Text = "SOCIO"; 
-            else  lblTipo.Text = "NO SOCIO";
+            if (socio) lblTipo.Text = "SOCIO";
+            else lblTipo.Text = "NO SOCIO";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+                "Se imprimio correctamente el carnet",
+                "Imprimir",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
     }
 }
