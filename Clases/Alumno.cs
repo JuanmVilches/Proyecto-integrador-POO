@@ -1,8 +1,8 @@
-﻿namespace Proyecto_integrador_club_deportivo
+﻿namespace Proyecto_integrador_club_deportivo.Clases
 {
     internal class Alumno : Persona
     {
-        private List<string> pagos; // Cuando este crada la clase Pago sera List<Pago>
+        private List<Pago> pagos; // Cuando este crada la clase Pago sera List<Pago>
         private List<string> rutinas; // Cuando este creada la clase Rutina sera List<Rutina>
         private bool esSocio;
         public bool apto_fisico;
@@ -11,12 +11,16 @@
             : base(identificador, documento, nombre, apellido)
         {
             this.esSocio = esSocio;
-            this.pagos = new List<string>();
+            this.pagos = new List<Pago>();
             this.rutinas = new List<string>();
             this.apto_fisico = apto_fisico;
             this.actividad = actividad;
         }
-        public List<string> Pagos { get => pagos; set => pagos = value; }
+        public List<Pago> Pagos { get => pagos; set => pagos = value; }
+        public void agregarPago(Pago pago)
+        {
+            this.pagos.Add(pago);
+        }
         public List<string> Rutinas { get => rutinas; set => rutinas = value; }
         public bool EsSocio { get => esSocio; set => esSocio = value; }
         public virtual void pagar() { }

@@ -1,4 +1,5 @@
-﻿using Proyecto_integrador_club_deportivo.Datos;
+﻿using Proyecto_integrador_club_deportivo.Clases;
+using Proyecto_integrador_club_deportivo.Datos;
 
 namespace Proyecto_integrador_club_deportivo
 {

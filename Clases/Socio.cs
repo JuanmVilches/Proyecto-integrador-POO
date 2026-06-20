@@ -1,4 +1,4 @@
-﻿namespace Proyecto_integrador_club_deportivo
+﻿namespace Proyecto_integrador_club_deportivo.Clases
 {
     internal class Socio : Alumno
     {
@@ -14,7 +14,7 @@
 
         public override void pagar()
         {
-            base.pagar();
+            
         }
 
         public override bool obtenerEstadoPago()

@@ -1,4 +1,4 @@
-﻿namespace Proyecto_integrador_club_deportivo
+﻿namespace Proyecto_integrador_club_deportivo.Clases
 {
     internal class NoSocio: Alumno
     {

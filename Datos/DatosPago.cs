@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Proyecto_integrador_club_deportivo.Clases;
 using System.Data;
 
 namespace Proyecto_integrador_club_deportivo.Datos
