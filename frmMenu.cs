@@ -28,6 +28,7 @@
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
+                e.Cancel = true;
                 btnSalir_Click(sender, e);
             }
         }

@@ -39,7 +39,8 @@ INSERT INTO Alumno (documento, nombre, apellido, esSocio, apto_fisico, actividad
 
 -- Pagos de ejemplo
 INSERT INTO Pago (periodoInicio, periodoFin, identificadorAlumno) VALUES
-(CURDATE(),CURDATE(),1);
+(CURDATE(),CURDATE(),1),
+(CURDATE(),CURDATE(),2);
 
 -- INICIO STORED PROCEDURES --
 DELIMITER $
@@ -93,6 +94,7 @@ BEGIN
     FROM Alumno a
     INNER JOIN Pago p
         ON a.identificador = p.identificadorAlumno
+	WHERE a.esSocio = true
     GROUP BY
         a.identificador,
         a.documento,
