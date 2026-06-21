@@ -32,7 +32,14 @@ INSERT INTO Usuario (usuario, clave) VALUES
 
 -- Alumno de ejemplo
 INSERT INTO Alumno (documento, nombre, apellido, esSocio, apto_fisico, actividad) VALUES
-(12345678, "Pedro", "Martinez", 0, 1, "Futbol");
+(11001001, "Pedro", "Martinez", 0, 1, "Futbol"),
+(12002002, "Marta", "Pérez", 1, 1, "Basquet"),
+(13003003, "Joaquín", "Gomez", 0, 1, "Gimnasio"),
+(14004004, "Juan", "Fernandez", 1, 1, "Natacion");
+
+-- Pagos de ejemplo
+INSERT INTO Pago (periodoInicio, periodoFin, identificadorAlumno) VALUES
+(CURDATE(),CURDATE(),1);
 
 -- INICIO STORED PROCEDURES --
 DELIMITER $

@@ -2,8 +2,8 @@
 {
     internal class NoSocio: Alumno
     {
-        public NoSocio(int identificador, int documento, string nombre, string apellido, bool apto_fisico, string actividad)
-           : base(identificador, documento, nombre, apellido, false, apto_fisico, actividad) // esSocio = false
+        public NoSocio(int identificador, int documento, string nombre, string apellido, DateTime vencimiento, bool apto_fisico, string actividad)
+           : base(identificador, documento, nombre, apellido, vencimiento, false, apto_fisico, actividad) // esSocio = false
         { }
         public override string obtenerEstadoPago()
         {

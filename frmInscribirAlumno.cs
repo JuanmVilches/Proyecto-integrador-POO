@@ -39,7 +39,7 @@ namespace Proyecto_integrador_club_deportivo
             }
             else
             {
-                alumno = new NoSocio(0, documento, txtNombre.Text, txtApellido.Text, chkAptoFisico.Checked, cmbActividad.Text);
+                alumno = new NoSocio(0, documento, txtNombre.Text, txtApellido.Text, DateTime.Today, chkAptoFisico.Checked, cmbActividad.Text);
             };
             if(DatosAlumno.ExisteAlumno(alumno))
             {

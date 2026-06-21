@@ -24,6 +24,13 @@
                 Application.Exit();
             }
         }
+        private void frmMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                btnSalir_Click(sender, e);
+            }
+        }
         private void btnVerInscriptos_Click(object sender, EventArgs e)
         {
             frmVerInscriptos verInscriptos = new frmVerInscriptos();

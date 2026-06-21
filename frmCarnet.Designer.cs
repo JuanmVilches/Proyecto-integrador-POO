@@ -156,7 +156,10 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmCarnet";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Carnet";
             ResumeLayout(false);
             PerformLayout();
