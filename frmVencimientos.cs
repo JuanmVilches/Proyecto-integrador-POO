@@ -1,4 +1,5 @@
 ﻿using Proyecto_integrador_club_deportivo.Datos;
+using Proyecto_integrador_club_deportivo.Clases;
 
 namespace Proyecto_integrador_club_deportivo
 {
@@ -10,31 +11,24 @@ namespace Proyecto_integrador_club_deportivo
         }
         private void frmVencimientos_Load(object sender, EventArgs e)
         {
-            dgvVencimientos.DataSource = DatosPago.LeerVencimientosHoy();
+            List<string> ordenColumnas = ["Documento", "Nombre", "Apellido", "EsSocio", "Apto_fisico", "Actividad", "Vencimiento"];
+
+            List<Alumno> alumnosConVencimientoHoy = DatosPago.LeerVencimientosHoy();
+            dgvVencimientos.DataSource = alumnosConVencimientoHoy;
+
+            for (int i = 0; i < ordenColumnas.Count; i++)
+            {
+                dgvVencimientos.Columns[ordenColumnas[i]].DisplayIndex = i;
+            }
+
+            dgvVencimientos.Columns["Apto_fisico"].HeaderText = "Apto Fisico";
+            dgvVencimientos.Columns["EsSocio"].HeaderText = "Socio";
+            dgvVencimientos.Columns["Identificador"].Visible = false;
+            dgvVencimientos.Columns["vencimiento"].DefaultCellStyle.Format = "dd/MM/yyyy";
 
             dgvVencimientos.ReadOnly = true;
             dgvVencimientos.AllowUserToAddRows = false;
             dgvVencimientos.AllowUserToDeleteRows = false;
-
-            dgvVencimientos.Columns["identificador"].Visible = false;
-
-            dgvVencimientos.Columns["documento"].HeaderText =
-                "Documento";
-
-            dgvVencimientos.Columns["nombre"].HeaderText =
-                "Nombre";
-
-            dgvVencimientos.Columns["apellido"].HeaderText =
-                "Apellido";
-
-            dgvVencimientos.Columns["actividad"].HeaderText =
-                "Actividad";
-
-            dgvVencimientos.Columns["vencimiento"].HeaderText =
-                "Vencimiento";
-
-            dgvVencimientos.Columns["vencimiento"]
-                .DefaultCellStyle.Format = "dd/MM/yyyy";
         }
     }
 }

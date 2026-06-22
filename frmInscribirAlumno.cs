@@ -1,10 +1,11 @@
-﻿using Proyecto_integrador_club_deportivo.Datos;
+﻿using Proyecto_integrador_club_deportivo.Clases;
+using Proyecto_integrador_club_deportivo.Datos;
 
 namespace Proyecto_integrador_club_deportivo
 {
-    public partial class frmInscribirPostulante : Form
+    public partial class frmInscribirAlumno : Form
     {
-        public frmInscribirPostulante()
+        public frmInscribirAlumno()
         {
             InitializeComponent();
         }
@@ -30,15 +31,16 @@ namespace Proyecto_integrador_club_deportivo
                 );
                 return;
             }
-            Alumno alumno = new Alumno(
-                0,
-                int.Parse(txtDocumento.Text),
-                txtNombre.Text,
-                txtApellido.Text,
-                chkSocio.Checked,
-                chkAptoFisico.Checked,
-                cmbActividad.Text
-            );
+            Alumno alumno;
+            if (chkSocio.Checked)
+            {
+                DateTime venc = DateTime.Today.AddMonths(1); // o el valor que quieras asignar
+                alumno = new Socio(0, documento, txtNombre.Text, txtApellido.Text, venc, chkAptoFisico.Checked, cmbActividad.Text);
+            }
+            else
+            {
+                alumno = new NoSocio(0, documento, txtNombre.Text, txtApellido.Text, DateTime.Today, chkAptoFisico.Checked, cmbActividad.Text);
+            };
             if(DatosAlumno.ExisteAlumno(alumno))
             {
                 MessageBox.Show(
@@ -56,7 +58,7 @@ namespace Proyecto_integrador_club_deportivo
                     "Alumno creado con éxito!",
                     "Crear nuevo alumno",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation
+                    MessageBoxIcon.Information
                 );
             }
             btnLimpiar_Click(this, e);

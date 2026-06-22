@@ -8,7 +8,7 @@
         }
         private void btnInscribir_Click(object sender, EventArgs e)
         {
-            frmInscribirPostulante inscribirPosulante = new frmInscribirPostulante();
+            frmInscribirAlumno inscribirPosulante = new frmInscribirAlumno();
             inscribirPosulante.ShowDialog();
         }
         private void btnSalir_Click(object sender, EventArgs e)
@@ -22,6 +22,14 @@
             if (resultado == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+        }
+        private void frmMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                btnSalir_Click(sender, e);
             }
         }
         private void btnVerInscriptos_Click(object sender, EventArgs e)

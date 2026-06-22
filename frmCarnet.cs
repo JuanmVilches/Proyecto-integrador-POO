@@ -1,24 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using Proyecto_integrador_club_deportivo.Clases;
 
 namespace Proyecto_integrador_club_deportivo
 {
     public partial class frmCarnet : Form
     {
-        public frmCarnet(string nombre, string apellido, string documento, string actividad, bool socio)
+        internal frmCarnet(Alumno alumno)
         {
             InitializeComponent();
+            lblNombre.Text = alumno.Nombre + " " + alumno.Apellido;
+            lblActividad.Text = alumno.Actividad;
+            lblDocumento.Text = alumno.Documento.ToString();
+            if (alumno.EsSocio) lblTipo.Text = "SOCIO";
+            else lblTipo.Text = "NO SOCIO";
+        }
 
-            lblNombre.Text = nombre + " " + apellido;
-            lblActividad.Text = actividad;
-            lblDocumento.Text = documento;
-            if (socio)  lblTipo.Text = "SOCIO"; 
-            else  lblTipo.Text = "NO SOCIO";
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+                "Se imprimio correctamente el carnet",
+                "Imprimir",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
     }
 }

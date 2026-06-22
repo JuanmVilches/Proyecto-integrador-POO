@@ -183,9 +183,12 @@
             Controls.Add(groupBox1);
             Controls.Add(lblNombre);
             Controls.Add(label1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmPago";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Registro de pago";
+            Load += frmPago_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);

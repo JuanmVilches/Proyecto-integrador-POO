@@ -1,90 +1,61 @@
-﻿using Proyecto_integrador_club_deportivo.Datos;
+﻿using Proyecto_integrador_club_deportivo.Clases;
+using Proyecto_integrador_club_deportivo.Datos;
 
 namespace Proyecto_integrador_club_deportivo
 {
     public partial class frmVerInscriptos : Form
     {
+        List<Alumno> alumnos = new List<Alumno>();
         public frmVerInscriptos()
         {
             InitializeComponent();
         }
         private void CargarGrilla()
         {
-            dvgInscriptos.DataSource = DatosAlumno.LeerAlumnos();
+            List<string> ordenColumnas = ["Documento","Nombre","Apellido","EsSocio","Apto_fisico","Actividad","Vencimiento"];
 
-            if (!dvgInscriptos.Columns.Contains("Estado"))
+            alumnos.Clear();
+            alumnos = DatosAlumno.LeerAlumnos();
+            dvgInscriptos.DataSource = alumnos;
+
+            for (int i = 0; i < ordenColumnas.Count; i++)
             {
-                DataGridViewTextBoxColumn estado = new DataGridViewTextBoxColumn();
-
-                estado.Name = "Estado";
-                estado.HeaderText = "Estado";
-
-                dvgInscriptos.Columns.Add(estado);
+                dvgInscriptos.Columns[ordenColumnas[i]].DisplayIndex = i;
             }
 
-            if (!dvgInscriptos.Columns.Contains("Ver Carnet"))
+            dvgInscriptos.Columns["Apto_fisico"].HeaderText = "Apto Fisico";
+            dvgInscriptos.Columns["EsSocio"].HeaderText = "Socio";
+            dvgInscriptos.Columns["Identificador"].Visible = false;
+
+            if (!dvgInscriptos.Columns.Contains("estado"))
+            {
+                dvgInscriptos.Columns.Add("estado", "Estado");
+            }
+            foreach (DataGridViewRow r in dvgInscriptos.Rows)
+            {
+                r.Cells["estado"].Value = alumnos[r.Index].obtenerEstadoPago();
+            }
+            if (!dvgInscriptos.Columns.Contains("carnet"))
             {
                 DataGridViewButtonColumn btnCarnet = new DataGridViewButtonColumn();
-
-                btnCarnet.Name = "Ver Carnet";
+                btnCarnet.Name = "carnet";
                 btnCarnet.HeaderText = "Carnet";
                 btnCarnet.Text = "Ver Carnet";
                 btnCarnet.UseColumnTextForButtonValue = true;
-
                 dvgInscriptos.Columns.Add(btnCarnet);
             }
-
-            if (!dvgInscriptos.Columns.Contains("Pagar"))
+            if (!dvgInscriptos.Columns.Contains("pagar"))
             {
-                DataGridViewButtonColumn btnPagar =
-                    new DataGridViewButtonColumn();
-
-                btnPagar.Name = "Pagar";
+                DataGridViewButtonColumn btnPagar = new DataGridViewButtonColumn();
+                btnPagar.Name = "pagar";
                 btnPagar.HeaderText = "Cuota";
                 btnPagar.Text = "Pagar";
                 btnPagar.UseColumnTextForButtonValue = true;
-
                 dvgInscriptos.Columns.Add(btnPagar);
             }
-
             dvgInscriptos.ReadOnly = true;
             dvgInscriptos.AllowUserToAddRows = false;
             dvgInscriptos.AllowUserToDeleteRows = false;
-
-            dvgInscriptos.Columns["identificador"].Visible = false;
-
-            dvgInscriptos.Columns["nombre"].HeaderText = "Nombre";
-            dvgInscriptos.Columns["apellido"].HeaderText = "Apellido";
-            dvgInscriptos.Columns["documento"].HeaderText = "Documento";
-            dvgInscriptos.Columns["esSocio"].HeaderText = "Socio";
-            dvgInscriptos.Columns["apto_fisico"].HeaderText = "Apto Físico";
-            dvgInscriptos.Columns["actividad"].HeaderText = "Actividad";
-            dvgInscriptos.Columns["vencimiento"].HeaderText = "Vencimiento";
-
-            dvgInscriptos.Columns["vencimiento"]
-                .DefaultCellStyle.Format = "dd/MM/yyyy";
-
-            foreach (DataGridViewRow fila in dvgInscriptos.Rows)
-            {
-                object vencimiento =
-                    fila.Cells["vencimiento"].Value;
-
-                if (vencimiento == null ||
-                    vencimiento == DBNull.Value)
-                {
-                    fila.Cells["Estado"].Value =
-                        "Sin pagos";
-                }
-                else
-                {
-                    DateTime fecha = Convert.ToDateTime(vencimiento);
-
-                    fila.Cells["Estado"].Value =
-                        fecha >= DateTime.Today
-                        ? "Al día"
-                        : "Vencido";
-                }
-            }
         }
         private void frmVerInscriptos_Load(object sender, EventArgs e)
         {
@@ -92,47 +63,26 @@ namespace Proyecto_integrador_club_deportivo
         }
         private void dvgInscriptos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dvgInscriptos.Columns["Ver Carnet"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dvgInscriptos.Columns["carnet"].Index && e.RowIndex >= 0)
             {
-                DataGridViewRow fila =
-                    dvgInscriptos.Rows[e.RowIndex];
-
-                frmCarnet carnet =
-                    new frmCarnet(
-                        fila.Cells["nombre"].Value.ToString(),
-                        fila.Cells["apellido"].Value.ToString(),
-                        fila.Cells["documento"].Value.ToString(),
-                        fila.Cells["actividad"].Value.ToString(),
-                        Convert.ToBoolean(
-                            fila.Cells["esSocio"].Value)
-                    );
-
+                frmCarnet carnet = new frmCarnet(alumnos[e.RowIndex]);
                 carnet.ShowDialog();
             }
-            if (e.ColumnIndex == dvgInscriptos.Columns["Pagar"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dvgInscriptos.Columns["pagar"].Index && e.RowIndex >= 0)
             {
-                DataGridViewRow fila =
-                    dvgInscriptos.Rows[e.RowIndex];
-
-                string nombre = fila.Cells["nombre"].Value.ToString() + fila.Cells["apellido"].Value.ToString();
-
-                int identificador = Convert.ToInt32(fila.Cells["identificador"].Value);
-                int documento = (Convert.ToInt32(fila.Cells["documento"].Value));
-
-                bool esSocio =
-                    Convert.ToBoolean(
-                        fila.Cells["esSocio"].Value);
-
-                string estadoPago = fila.Cells["Estado"].Value.ToString();
-                if(estadoPago == "Al día")
+                if (alumnos[e.RowIndex].obtenerEstadoPago() == "Al día")
                 {
-                    MessageBox.Show("La cuota se encuentra al día");
+                    MessageBox.Show(
+                        "La cuota se encuentra al día",
+                        "Pagar",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
                     return;
                 };
-
-                if(estadoPago == "Vencido" || estadoPago == "Sin pagos")
+                if(alumnos[e.RowIndex].obtenerEstadoPago() == "Vencido" || alumnos[e.RowIndex].obtenerEstadoPago() == "Sin pagos")
                 {
-                    frmPago formularioPagos = new frmPago(esSocio, documento, nombre, identificador);
+                    frmPago formularioPagos = new frmPago(alumnos[e.RowIndex]);
                     if (formularioPagos.ShowDialog() == DialogResult.OK)
                     {
                         CargarGrilla();

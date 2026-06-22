@@ -37,6 +37,7 @@
             lblDocumento = new Label();
             lblActividad = new Label();
             lblTipo = new Label();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -129,11 +130,23 @@
             lblTipo.TabIndex = 8;
             lblTipo.Text = "label9";
             // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 15F);
+            button1.Location = new Point(608, 375);
+            button1.Name = "button1";
+            button1.Size = new Size(180, 63);
+            button1.TabIndex = 9;
+            button1.Text = "Imprimir";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // frmCarnet
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(lblTipo);
             Controls.Add(lblActividad);
             Controls.Add(lblDocumento);
@@ -143,7 +156,10 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmCarnet";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Carnet";
             ResumeLayout(false);
             PerformLayout();
@@ -160,5 +176,6 @@
         private Label lblDocumento;
         private Label lblActividad;
         private Label lblTipo;
+        private Button button1;
     }
 }

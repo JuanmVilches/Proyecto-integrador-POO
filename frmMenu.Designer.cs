@@ -100,15 +100,17 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 484);
-            ControlBox = false;
             Controls.Add(btnEmitirComprobante);
             Controls.Add(btnVerInscriptos);
             Controls.Add(btnInscribir);
             Controls.Add(btnSalir);
             Controls.Add(label1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menú principal";
+            FormClosing += frmMenu_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }
